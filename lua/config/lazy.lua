@@ -17,6 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("config.autocmds")
 require("config.keymaps")
 require("config.options")
+require("config.snippets")
 
 local opts = {
 	checker = {
@@ -35,7 +36,7 @@ local opts = {
 				"gzip",
 				-- "machit",
 				-- "machparen",
-				-- "netrwPlugin",
+				"netrwPlugin",
 				"tarPlugin",
 				"tohtml",
 				"tutor",
