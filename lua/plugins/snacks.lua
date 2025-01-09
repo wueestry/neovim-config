@@ -1,24 +1,36 @@
 return {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
+  {
+    "snacks.nvim",
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      bigfile = { enabled = true },
-      input = { enabled = true },
-      notifier = { enabled = true },
-      quickfile = { enabled = true },
-      scroll = { enabled = true },
-      statuscolumn = { enabled = true },
-      words = { enabled = true },
+      dashboard = {
+        preset = {
+
+          header = [[                                                             
+
+ █████╗ ████████╗██╗      █████╗ ███████╗██╗   ██╗██╗███╗   ███╗
+██╔══██╗╚══██╔══╝██║     ██╔══██╗██╔════╝██║   ██║██║████╗ ████║
+███████║   ██║   ██║     ███████║███████╗██║   ██║██║██╔████╔██║
+██╔══██║   ██║   ██║     ██╔══██║╚════██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║  ██║   ██║   ███████╗██║  ██║███████║ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+                                                                
+   ]],
+
+          -- stylua: ignore
+          ---@type snacks.dashboard.Item[]
+
+          keys = {
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
+      },
     },
-    keys = {
-        { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
-        { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
-        { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
-        { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-    },
-  }
+  },
+}
