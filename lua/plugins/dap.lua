@@ -139,4 +139,91 @@ return {
     -- mason-nvim-dap is loaded when nvim-dap loads
     config = function() end,
   },
+  -- Python DAP
+  {
+    "mfussenegger/nvim-dap-python",
+  -- stylua: ignore
+  keys = {
+    { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
+    { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+  },
+    config = function()
+      if vim.fn.has("win32") == 1 then
+        require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/Scripts/pythonw.exe"))
+      else
+        require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/bin/python"))
+      end
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap",
+    optional = true,
+    dependencies = {
+      "mfussenegger/nvim-dap-python",
+    -- stylua: ignore
+    keys = {
+      { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
+
+      { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+
+    },
+      config = function()
+        if vim.fn.has("win32") == 1 then
+          require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/Scripts/pythonw.exe"))
+        else
+          require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/bin/python"))
+        end
+      end,
+    },
+  },
+  -- Clangd DAP
+  {
+    "mfussenegger/nvim-dap",
+    optional = true,
+    dependencies = {
+      -- Ensure C/C++ debugger is installed
+      "williamboman/mason.nvim",
+      optional = true,
+      opts = { ensure_installed = { "codelldb" } },
+    },
+    opts = function()
+      local dap = require("dap")
+      if not dap.adapters["codelldb"] then
+        require("dap").adapters["codelldb"] = {
+          type = "server",
+          host = "localhost",
+          port = "${port}",
+          executable = {
+            command = "codelldb",
+            args = {
+              "--port",
+              "${port}",
+            },
+          },
+        }
+      end
+      for _, lang in ipairs({ "c", "cpp" }) do
+        dap.configurations[lang] = {
+
+          {
+            type = "codelldb",
+            request = "launch",
+            name = "Launch file",
+            program = function()
+              return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            end,
+            cwd = "${workspaceFolder}",
+          },
+
+          {
+            type = "codelldb",
+            request = "attach",
+            name = "Attach to process",
+            pid = require("dap.utils").pick_process,
+            cwd = "${workspaceFolder}",
+          },
+        }
+      end
+    end,
+  },
 }
