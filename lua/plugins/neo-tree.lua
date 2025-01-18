@@ -11,7 +11,7 @@ return {
   },
   cmd = "Neotree",
   keys = {
-    { "<leader>ee", ":Neotree toggle filesystem left<CR>", desc = "Toggle [E]xplorer [E]", silent = true },
+    { "<leader>ee", ":Neotree toggle filesystem left<CR>", desc = "Toggle [E]xplorer [E]xpand", silent = true },
     { "<leader>eb", ":Neotree toggle buffers float<CR>", desc = "Toggle [E]xplorer [B]uffer", silent = true },
     {
       "<leader>ec",
