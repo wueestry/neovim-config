@@ -4,7 +4,7 @@ return {
     -- used for completion, annotations and signatures of Neovim apis
     "folke/lazydev.nvim",
     ft = "lua",
-    event = "LazyFile",
+    event = "VeryLazy",
     opts = {
       library = {
         -- Load luvit types when the `vim.uv` word is found
@@ -29,6 +29,7 @@ return {
       -- Allows extra capabilities provided by nvim-cmp
       "hrsh7th/cmp-nvim-lsp",
     },
+    event = { "BufReadPre", "BufNewFile" }, -- BUG: Prevents new tools from being installed!
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
