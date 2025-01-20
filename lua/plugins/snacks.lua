@@ -1,36 +1,56 @@
 return {
-  {
-    "snacks.nvim",
-    opts = {
-      dashboard = {
-        preset = {
-
-          header = [[                                                             
-
- █████╗ ████████╗██╗      █████╗ ███████╗██╗   ██╗██╗███╗   ███╗
-██╔══██╗╚══██╔══╝██║     ██╔══██╗██╔════╝██║   ██║██║████╗ ████║
-███████║   ██║   ██║     ███████║███████╗██║   ██║██║██╔████╔██║
-██╔══██║   ██║   ██║     ██╔══██║╚════██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║  ██║   ██║   ███████╗██║  ██║███████║ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
-                                                                
-   ]],
-
-          -- stylua: ignore
-          ---@type snacks.dashboard.Item[]
-
-          keys = {
-            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-            { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-          },
-        },
-      },
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    bigfile = { enabled = true },
+    dashboard = {
+      enabled = true,
+      header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+    },
+    indent = {
+      enabled = true,
+      indent = { only_scope = true }, -- only show indent where cursor is
+      chunk = { enabled = true }, -- indents are rendered as chunks
+      animate = { enabled = false }, -- do not animate -- feels slow for me
+    },
+    notifier = {
+      enabled = true,
+      timeout = 2000,
+    },
+    quickfile = { enabled = true },
+    scroll = { enabled = false },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    lazygit = { enabled = true },
+  },
+  keys = {
+    {
+      "*",
+      function()
+        Snacks.words.jump(vim.v.count1)
+      end,
+      desc = "Next Reference",
+    },
+    {
+      "#",
+      function()
+        Snacks.words.jump(-vim.v.count1)
+      end,
+      desc = "Prev Reference",
+    },
+    {
+      "<leader>gg",
+      function()
+        Snacks.lazygit()
+      end,
+      desc = "[G]it Lazy[G]it",
     },
   },
 }
