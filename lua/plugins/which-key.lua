@@ -16,6 +16,7 @@ return {
       { "<leader>e", group = "[E]xplorer" },
       { "<leader>x", group = "Trouble [X]" },
       { "<leader>h", group = "[H]arpoon" },
+      { "<leader>s", group = "[S]plit" },
     },
   },
 }
