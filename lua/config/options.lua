@@ -41,7 +41,7 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
 
 -- Decrease update time
-vim.opt.updatetime = 50
+vim.opt.updatetime = 100
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
