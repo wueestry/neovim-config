@@ -14,6 +14,9 @@ return {
           path = "~/Documents/obsidian",
         },
       },
+
+      log_level = vim.log.levels.ERROR,
+
       new_notes_location = "inbox",
       templates = {
         subdir = "templates",
