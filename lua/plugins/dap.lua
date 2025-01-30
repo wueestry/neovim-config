@@ -16,32 +16,32 @@ return {
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
     {
-      "<F5>",
+      "<leader>dsc",
       function()
         require("dap").continue()
       end,
-      desc = "Debug: Start/Continue",
+      desc = "[D]ebug: [S]tart/[C]ontinue",
     },
     {
-      "<F1>",
+      "<leader>dsi",
       function()
         require("dap").step_into()
       end,
-      desc = "Debug: Step Into",
+      desc = "[D]ebug: [S]tep [I]nto",
     },
     {
-      "<F2>",
+      "<leader>dso",
       function()
         require("dap").step_over()
       end,
-      desc = "Debug: Step Over",
+      desc = "[D]ebug: [S]tep [O]ver",
     },
     {
-      "<F3>",
+      "<leader>dse",
       function()
         require("dap").step_out()
       end,
-      desc = "Debug: Step Out",
+      desc = "[D]ebug: [S]tep Out ([E]xit)",
     },
     {
       "<leader>dt",

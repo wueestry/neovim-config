@@ -20,3 +20,6 @@ map.set("n", "<leader>srk", "<cmd>resize +5<cr>", { desc = "[S]plit [R]esize Up 
 map.set("n", "<leader>srj", "<cmd>resize -5<cr>", { desc = "[S]plit [R]esize Down [j]" })
 map.set("n", "<leader>srh", "<cmd>vertical resize +3<cr>", { desc = "[S]plit [R]esize Left [h]" })
 map.set("n", "<leader>srl", "<cmd>vertical resize -3<cr>", { desc = "[S]plit [R]esize Right [l]" })
+
+-- Change workingdir
+map.set("n", "<leader>wc", ":cd %:p:h<CR>:pwd<CR>", { desc = "[W]orkspace [C]hange" })
