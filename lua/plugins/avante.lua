@@ -18,5 +18,8 @@ return {
     "stevearc/dressing.nvim", -- Dependency for enhanced UI components
     "nvim-lua/plenary.nvim", -- Utility library for Neovim plugins
     "MunifTanjim/nui.nvim", -- Library for building user interfaces in Neovim
+    --- The below dependencies are optional,
+    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
   },
 }
