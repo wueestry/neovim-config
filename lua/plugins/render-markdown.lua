@@ -7,5 +7,9 @@ return {
   ft = { "markdown", "Avante" },
   opts = {
     file_types = { "markdown", "Avante" },
+    completions = { blink = { enabled = true } },
+    latex = {
+      enabled = true,
+    },
   },
 }

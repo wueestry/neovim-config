@@ -66,8 +66,13 @@ return {
     --  * "current_dir" - put new notes in same directory as the current buffer.
     --  * "notes_subdir" - put new notes in the default notes subdirectory.
     new_notes_location = "inbox",
+
+    ui = {
+      enable = false,
+    },
   },
   keys = {
-    { "<leader>on", "<cmd>ObsidianTemplate note-template<cr>", desc = "apply template to note" },
+    { "<leader>on", "<cmd>Obsidian template note-template<cr>", desc = "apply template to note" },
+    { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "search osidian vault" },
   },
 }
