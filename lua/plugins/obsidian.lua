@@ -44,6 +44,8 @@ return {
       min_chars = 2,
     },
 
+    disable_frontmatter = true,
+
     -- key mappings, below are the defaults
     mappings = {
       -- overrides the 'gf' mapping to work on markdown/wiki links within your vault
