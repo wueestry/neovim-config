@@ -75,6 +75,6 @@ return {
   },
   keys = {
     { "<leader>on", "<cmd>Obsidian template note-template<cr>", desc = "apply template to note" },
-    { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "search osidian vault" },
+    { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "search obsidian vault" },
   },
 }
