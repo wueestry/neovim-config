@@ -20,14 +20,14 @@ return {
     },
 
     templates = {
-      subdir = "templates",
+      subdir = "meta/templates",
       date_format = "%Y-%m-%d",
       time_format = "%H:%M:%S",
     },
 
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
-      folder = "areas/journal/daily",
+      folder = "fleeting-notes",
       -- Optional, if you want to change the date format for the ID of daily notes.
       date_format = "%Y-%m-%d",
       -- Optional, default tags to add to each new daily note created.
@@ -74,7 +74,8 @@ return {
     },
   },
   keys = {
-    { "<leader>on", "<cmd>Obsidian template note-template<cr>", desc = "apply template to note" },
+    { "<leader>on", "<cmd>Obsidian template note-template<cr>", desc = "apply note template" },
+    { "<leader>oj", "<cmd>Obsidian template daily-note-template", desc = "apply daily note template" },
     { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "search obsidian vault" },
   },
 }
