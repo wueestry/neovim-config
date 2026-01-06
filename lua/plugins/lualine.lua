@@ -2,7 +2,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy", -- loads lualine when needed, not at startup
-  dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("lualine").setup({
       options = {

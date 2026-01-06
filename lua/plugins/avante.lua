@@ -1,9 +1,10 @@
--- Avante: AI code assistant and chat for Neovim
+-- A vante: AI code assistant and chat for Neovim
 return {
   {
     "yetone/avante.nvim",
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     cmd = { "AvanteAsk", "AvanteChat", "AvanteToggle", "AvanteEdit" },
+    lazy = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -27,7 +28,7 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "gpt-5.1-mini",
+          model = "gpt-5-mini",
           timeout = 30000, -- Timeout in milliseconds
           extra_request_body = {
             temperature = 0.75,

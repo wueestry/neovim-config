@@ -26,8 +26,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
 -- Find and center
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "n", "nzzzv", opts)
+vim.keymap.set("n", "N", "Nzzzv", opts)
 
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", opts)

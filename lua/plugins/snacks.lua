@@ -39,14 +39,6 @@ return {
     scroll = { enabled = true },
     statuscolumn = { enabled = false },
     words = { enabled = true },
-    image = {
-      resolve = function(path, src)
-        local ok, obsidian_api = pcall(require, "obsidian.api")
-        if ok and obsidian_api.path_is_note(path) then
-          return obsidian_api.resolve_image_path(src)
-        end
-      end,
-    },
     styles = {
       notification = {},
     },
@@ -121,10 +113,5 @@ return {
         Snacks.toggle.diagnostics():map("<leader>ud")
       end,
     })
-  end,
-
-  config = function(_, opts)
-    local snacks = require("snacks")
-    snacks.setup(opts or {})
   end,
 }

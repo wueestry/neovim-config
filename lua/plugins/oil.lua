@@ -21,7 +21,4 @@ return {
       desc = "Open Oil file explorer",
     },
   },
-  config = function(_, opts)
-    require("oil").setup(opts)
-  end,
 }
