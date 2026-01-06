@@ -1,16 +1,13 @@
 local obsidian_path = "~/Documents/obsidian"
-vim.keymap.set("n", "<leader>oo", "<cmd>cd" .. obsidian_path .. "<cr>", { desc = "change directory to obsidian" })
+vim.keymap.set("n", "<leader>oo", "<cmd>cd " .. obsidian_path .. "<cr>", { desc = "change directory to obsidian" })
 
+-- Obsidian.nvim: Note-taking, daily notes, and markdown integration for Neovim
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
-  },
   opts = {
     workspaces = {
       {
@@ -46,22 +43,8 @@ return {
 
     disable_frontmatter = true,
 
-    -- key mappings, below are the defaults
-    mappings = {
-      -- overrides the 'gf' mapping to work on markdown/wiki links within your vault
-      ["gf"] = {
-        action = function()
-          return require("obsidian").util.gf_passthrough()
-        end,
-        opts = { noremap = false, expr = true, buffer = true },
-      },
-      -- toggle check-boxes
-      ["<leader>ti"] = {
-        action = function()
-          return require("obsidian").util.toggle_checkbox()
-        end,
-        opts = { buffer = true },
-      },
+    attachments = {
+      img_folder = "meta/assets",
     },
 
     -- Where to put new notes. Valid options are
@@ -75,7 +58,7 @@ return {
   },
   keys = {
     { "<leader>on", "<cmd>Obsidian template note-template<cr>", desc = "apply note template" },
-    { "<leader>oj", "<cmd>Obsidian template daily-note-template", desc = "apply daily note template" },
+    { "<leader>oj", "<cmd>Obsidian template daily-note-template<cr>", desc = "apply daily note template" },
     { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "search obsidian vault" },
   },
 }
