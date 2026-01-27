@@ -18,6 +18,10 @@ return {
       "query",
       "vim",
       "vimdoc",
+      -- Python-specific parsers
+      "python",
+      "ninja", -- Python build system
+      "rst", -- ReStructuredText (Python docs)
     },
     auto_install = true, -- Autoinstall languages that are not installed
     highlight = {

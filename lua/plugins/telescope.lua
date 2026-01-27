@@ -43,6 +43,7 @@ return {
     -- Enable Telescope extensions if they are installed
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
+    pcall(require("telescope").load_extension, "yank_history")
 
     -- See `:help telescope.builtin`
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find existing Buffers" })

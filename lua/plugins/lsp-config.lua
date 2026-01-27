@@ -108,6 +108,17 @@ return {
           --  the definition of its *type*, not where it was *defined*.
           map("gt", require("telescope.builtin").lsp_type_definitions, "Goto Type Definition")
 
+          -- Organize imports (useful for Python with ruff)
+          map("<leader>co", function()
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = {
+                only = { "source.organizeImports" },
+                diagnostics = {},
+              },
+            })
+          end, "[C]ode [O]rganize Imports")
+
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
@@ -156,8 +167,11 @@ return {
           -- The following code creates a keymap to toggle inlay hints in your
           -- code, if the language server you are using supports them
           --
-          -- This may be unwanted, since they displace some of your code
+          -- Inlay hints are now enabled by default for supported languages
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+            -- Enable inlay hints by default
+            vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+            -- Add toggle keymap
             map("<leader>th", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
             end, "[T]oggle Inlay [H]ints")
@@ -264,8 +278,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "stylua", -- Used to format Lua code
-        "ruff", -- Linter for Python code
-        "isort", -- Python import sorter
+        "ruff", -- Python linter and formatter (replaces isort)
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
